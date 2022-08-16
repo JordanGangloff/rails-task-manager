@@ -3,8 +3,18 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
-  def details
+  def show
     @task = Task.find(params[:id])
+  end
+
+  def new
+    @task = Task.new
+  end
+
+  def create
+    @task = Task.create(task_params)
+
+    redirect_to show_path(@task)
   end
 
   private
